@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AqarHub | اكتشف عقارك المثالي</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">Aqar<span>Hub</span></a>
+
+        <nav class="navbar">
+            <a href="#home">الرئيسية</a>
+            <a href="#properties">العقارات</a>
+            <a href="#about">من نحن</a>
+            <a href="#contact">تواصل معنا</a>
+            <a href="favorites.html">♡ المفضلة</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="login-btn">تسجيل الدخول</button>
+            <button class="add-property-btn">+ أضف عقارك</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-label">منصة عقارية متكاملة</span>
+
+            <h1>
+                اعثر على منزلك
+                <span>المثالي</span>
+            </h1>
+
+            <p>
+                اكتشف أفضل العقارات للبيع والإيجار
+                في مختلف أنحاء مصر.
+            </p>
+
+            <a href="#properties" class="hero-btn">
+                اكتشف العقارات
+            </a>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <h2>ابحث عن عقارك</h2>
+
+        <div class="search-box">
+
+            <div class="search-field">
+                <label for="location">الموقع</label>
+                <select id="location">
+                    <option value="">كل المناطق</option>
+                    <option value="القاهرة">القاهرة</option>
+                    <option value="الجيزة">الجيزة</option>
+                    <option value="الشرقية">الشرقية</option>
+                    <option value="الإسكندرية">الإسكندرية</option>
+                </select>
+            </div>
+
+            <div class="search-field">
+                <label for="type">نوع العقار</label>
+                <select id="type">
+                    <option value="">كل الأنواع</option>
+                    <option value="شقة">شقة</option>
+                    <option value="فيلا">فيلا</option>
+                    <option value="مكتب">مكتب</option>
+                </select>
+            </div>
+
+            <div class="search-field">
+                <label for="purpose">الغرض</label>
+                <select id="purpose">
+                    <option value="">بيع أو إيجار</option>
+                    <option value="بيع">للبيع</option>
+                    <option value="إيجار">للإيجار</option>
+                </select>
+            </div>
+
+            <button class="search-btn" onclick="searchProperties()">
+                بحث
+            </button>
+        
+
+        </div>
+        <div class="search-field">
+             <label>أقل سعر</label>
+            <input type="number" id="minPrice" placeholder="من">
+        </div>
+
+        <div class="search-field">
+             <label>أعلى سعر</label>
+            <input type="number" id="maxPrice" placeholder="إلى">
+        </div>
+
+        <div class="search-field">
+             <label>أقل مساحة (متر)</label>
+            <input type="number" id="minArea" placeholder="المساحة">
+        </div>
+        <div class="search-field">
+            <label>ترتيب حسب السعر</label>
+            <select id="sortPrice">
+                <option value="">الترتيب الافتراضي</option>
+                <option value="low">السعر من الأقل للأعلى</option>
+                <option value="high">السعر من الأعلى للأقل</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties-section" id="properties">
+
+        <div class="section-heading">
+            <div>
+                <span>اختيارات مميزة</span>
+                <h2>اكتشف أحدث العقارات</h2>
+            </div>
+
+            <a href="#properties">عرض جميع العقارات ←</a>
+        </div>
+
+        <div class="properties-grid" id="properties-container">
+            <!-- Properties will appear here using JavaScript -->
+        </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <h2>لماذا AqarHub؟</h2>
+
+        <p>
+            نسهل عليك الوصول إلى العقار المناسب،
+            ونوفر لك تجربة بحث بسيطة ومنظمة.
+        </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2>هل تبحث عن عقار؟</h2>
+        <p>ابدأ رحلتك معنا واكتشف العقار المناسب لك.</p>
+        <a href="#properties">تصفح العقارات</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h2>AqarHub</h2>
+        <p>منصتك لاكتشاف العقارات المناسبة.</p>
+        <p>© 2026 AqarHub. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العقارات المفضلة | AqarHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">AqarHub</a>
+        <nav class="navbar">
+            <a href="index.html">الرئيسية</a>
+            <a href="index.html#properties">العقارات</a>
+        </nav>
+    </header>
+
+    <main class="properties-section">
+        <div class="section-heading">
+            <h1>عقاراتي المفضلة ♡</h1>
+            <p>كل العقارات اللي اخترتي تحفظيها</p>
+        </div>
+
+        <div class="properties-grid" id="favorites-container"></div>
+    </main>
+
+    <script>
+        const favorites =
+            JSON.parse(localStorage.getItem("favorites")) || [];
+
+        const container =
+            document.getElementById("favorites-container");
+
+        if (favorites.length === 0) {
+            container.innerHTML = "<p>لسه مفيش عقارات في المفضلة ❤️</p>";
+        } else {
+            favorites.forEach(property => {
+                const card = document.createElement("div");
+                card.className = "property-card";
+
+                card.innerHTML = `
+                    <img src="${property.image}" class="property-image" alt="صورة العقار">
+                    <div class="property-info">
+                        <h3>${property.title}</h3>
+                        <p>${property.location}</p>
+                        <h3 class="property-price">${property.price}</h3>
+                        <button onclick="removeFavorite('${property.id}')">
+                            إزالة من المفضلة
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function removeFavorite(id) {
+            let updated = favorites.filter(item => item.id != id);
+            localStorage.setItem("favorites", JSON.stringify(updated));
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>

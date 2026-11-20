@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل العقار | AqarHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">AqarHub</a>
+        <nav class="navbar">
+            <a href="index.html">الرئيسية</a>
+            <a href="index.html#properties">العقارات</a>
+            <a href="index.html#contact">تواصل معنا</a>
+        </nav>
+    </header>
+
+    <main class="properties-section">
+        <div class="section-heading">
+            <h1>تفاصيل العقار</h1>
+            <p>اكتشفي كل التفاصيل قبل اتخاذ قرارك</p>
+        </div>
+
+        <div class="property-card">
+            <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200"
+                alt="صورة العقار"
+                class="property-image"
+                style="width:100%; height:350px; object-fit:cover;"
+            >
+
+            <div class="property-info">
+                <span class="property-badge">للبيع</span>
+                <h2>فيلا فاخرة</h2>
+                <p class="property-location">📍 القاهرة، مصر</p>
+
+                <h2 class="property-price">6,500,000 جنيه</h2>
+
+                <div class="property-details">
+                    <span>📐 المساحة: 320 متر</span>
+                    <span>🛏️ الغرف: 5</span>
+                    <span>🚿 الحمامات: 3</span>
+                </div>
+
+                <h3>وصف العقار</h3>
+                <p>
+                    فيلا واسعة بتصميم عصري، تحتوي على غرف متعددة
+                    ومساحات مريحة، مناسبة للعائلات.
+                </p>
+
+                <button onclick="toggleFavorite()">
+                    ♡ أضف للمفضلة
+                </button>
+
+                <button onclick="alert('سيتم إضافة وسيلة التواصل قريباً')">
+                    تواصل مع المعلن
+                </button>
+
+                <br><br>
+                <a href="index.html">← الرجوع للعقارات</a>
+            </div>
+        </div>
+    </main>
+    <script>
+    const property = JSON.parse(localStorage.getItem("selectedProperty"));
+
+    if (property) {
+        document.querySelector(".property-image").src = property.image;
+        document.querySelector(".property-image").alt = property.title;
+        document.querySelector(".property-info h2").textContent = property.title;
+
+        const info = document.querySelector(".property-info");
+        const price = info.querySelector(".property-price");
+        price.textContent = property.price;
+
+        info.querySelector(".property-location").textContent =
+            "📍 " + property.location;
+
+        const details = info.querySelector(".property-details");
+        details.innerHTML = `
+            <span>📐 المساحة: ${property.area} متر</span>
+            <span>🛏️ الغرف: ${property.rooms}</span>
+        `;
+    } else {
+        alert("من فضلك اختاري عقار من الصفحة الرئيسية");
+        window.location.href = "index.html";
+    }
+</script>
+<script>
+function toggleFavorite() {
+    const property = JSON.parse(localStorage.getItem("selectedProperty"));
+
+    if (!property) return;
+
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    const exists = favorites.some(item => item.id === property.id);
+
+    if (exists) {
+        favorites = favorites.filter(item => item.id !== property.id);
+        alert("تم حذف العقار من المفضلة");
+    } else {
+        favorites.push(property);
+        alert("تمت إضافة العقار للمفضلة ❤️");
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+</script>
+</body>
+</html>
